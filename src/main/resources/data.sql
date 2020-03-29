@@ -1,0 +1,3 @@
+insert into user(id, nome, cpf, email, cadastro) values(10001, 'João Machado', '123.456.789-11', 'joao.machado@email.com', sysdate());
+insert into user(id, nome, cpf, email, cadastro) values(10002, 'Maria Diniz', '123.456.789-12', 'maria.diniz@email.com', sysdate());
+insert into user(id, nome, cpf, email, cadastro) values(10003, 'Marcelo Silva', '123.456.789-13', 'marcelo.silva@email.com', sysdate());
