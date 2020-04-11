@@ -21,13 +21,18 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.itau.modernizacao.entity.UserEntity;
 import br.com.itau.modernizacao.exception.UserNotFoundException;
+import br.com.itau.modernizacao.model.WorkingTimeListModel;
 import br.com.itau.modernizacao.service.UserService;
+import br.com.itau.modernizacao.service.WorkingTimeService;
 
 @RestController
 public class UserController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private WorkingTimeService workingHourService;
 
 	@GetMapping(value = "/v1/users", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<UserEntity> findAll() {
@@ -58,6 +63,12 @@ public class UserController {
 	public ResponseEntity<Object> editUser(@Valid @RequestBody UserEntity userEntity, @PathVariable("id") Integer id) {
 		UserEntity savedUserEntity = userService.update(id, userEntity);
 		return ResponseEntity.ok(savedUserEntity);
+	}
+	
+	@GetMapping(value = "v1/users/{id}/logtime", produces = MediaType.APPLICATION_JSON_VALUE)
+	public WorkingTimeListModel getUserLogtime(@PathVariable("id") Integer userId) {
+		WorkingTimeListModel workingTimeListModel = workingHourService.findByUserId(userId);
+		return workingTimeListModel;
 	}
 
 }

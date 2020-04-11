@@ -15,7 +15,7 @@ import br.com.itau.modernizacao.entity.UserEntity;
 public interface UserRepository extends CrudRepository<UserEntity, Integer>{
 
 	/**
-	 * Query para buscar usuaio por cpf ou email
+	 * Query para buscar usuario por cpf ou email
 	 * @param cpf
 	 * @param email
 	 * @return UserEntity usuario
