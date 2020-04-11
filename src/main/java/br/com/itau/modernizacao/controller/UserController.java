@@ -66,9 +66,11 @@ public class UserController {
 	}
 	
 	@GetMapping(value = "v1/users/{id}/logtime", produces = MediaType.APPLICATION_JSON_VALUE)
-	public WorkingTimeListModel getUserLogtime(@PathVariable("id") Integer userId) {
-		WorkingTimeListModel workingTimeListModel = workingHourService.findByUserId(userId);
-		return workingTimeListModel;
+	public ResponseEntity<Object> getUserLogtime(@PathVariable("id") Integer userId) {
+		UserEntity userEntity = userService.findById(userId)
+				.orElseThrow(() -> new UserNotFoundException("Usuário não encontrado"));
+		WorkingTimeListModel workingTimeListModel = workingHourService.findByUser(userEntity);
+		return ResponseEntity.ok(workingTimeListModel);
 	}
 
 }

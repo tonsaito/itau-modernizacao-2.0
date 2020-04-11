@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import br.com.itau.modernizacao.entity.UserEntity;
 import br.com.itau.modernizacao.entity.WorkingTimeEntity;
 import br.com.itau.modernizacao.model.WorkingTimeListModel;
 import br.com.itau.modernizacao.repository.WorkingTimeRepository;
@@ -17,12 +18,12 @@ public class WorkingTimeServiceImpl implements WorkingTimeService{
 	private WorkingTimeRepository repository;
 
 	@Override
-	public WorkingTimeListModel findByUserId(Integer userId) {
+	public WorkingTimeListModel findByUser(UserEntity userEntity) {
 		WorkingTimeListModel listModel = new WorkingTimeListModel();
-		List<WorkingTimeEntity> workingTimeList = repository.findAllByUserId(userId);
-		listModel.setUserEntity(workingTimeList.get(0).getUsuario());
+		List<WorkingTimeEntity> workingTimeList = repository.findAllByUserId(userEntity.getId());
 		listModel.setWorkingTimeEntity(workingTimeList);
 		listModel.calculateWorkingTime();
+		listModel.setUserEntity(userEntity);
 		return listModel;
 	}
 
