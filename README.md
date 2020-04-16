@@ -10,7 +10,7 @@ mvn spring-boot:run
 
 ## Usage
 
-## Mocked users
+### Mocked users
 Para fins de usabilidade, ao rodar o projeto, são carregados 3 usuários:
 
 ID: 10001 - João Machado, 123.456.789-11, joao.machado@email.com
@@ -19,9 +19,10 @@ ID: 10002 - Maria Diniz, 123.456.789-12, maria.diniz@email.com
 
 ID: 10003 - Marcelo Silva, 123.456.789-13, marcelo.silva@email.com
 
-## Postman
+### Postman
 Para facilitar, basta importar o arquivo "Itaú Modernização 2.0.postman_collection.json" no Postman.
 
+### Endpoints
 
 #### GET http://localhost:8080/v1/users
 ##### Listar todos usuários
