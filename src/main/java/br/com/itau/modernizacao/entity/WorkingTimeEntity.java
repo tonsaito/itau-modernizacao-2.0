@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -50,12 +51,14 @@ public class WorkingTimeEntity {
 	@OneToOne
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	@JsonIgnore
-	private UserEntity usuario;
+	private UserEntity user;
 
-	@Column
-	private Date data;
+	@Column(name = "log_date")
+	@JsonProperty(value = "data")
+	private Date date;
 
-	@Column
+	@Column(name = "log_type")
 	@Enumerated(EnumType.STRING)
-	private TYPE tipo;
+	@JsonProperty(value = "tipo")
+	private TYPE type;
 }

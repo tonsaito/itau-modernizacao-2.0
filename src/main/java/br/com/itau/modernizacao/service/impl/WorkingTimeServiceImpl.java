@@ -21,7 +21,7 @@ public class WorkingTimeServiceImpl implements WorkingTimeService{
 	public WorkingTimeListModel findByUser(UserEntity userEntity) {
 		WorkingTimeListModel listModel = new WorkingTimeListModel();
 		List<WorkingTimeEntity> workingTimeList = repository.findAllByUserId(userEntity.getId());
-		listModel.setWorkingTimeEntity(workingTimeList);
+		listModel.setWorkingTimeEntityList(workingTimeList);
 		listModel.calculateWorkingTime();
 		listModel.setUserEntity(userEntity);
 		return listModel;
@@ -29,10 +29,9 @@ public class WorkingTimeServiceImpl implements WorkingTimeService{
 
 	@Override
 	public WorkingTimeEntity save(WorkingTimeEntity workingHourEntity) {
-		// TODO Auto-generated method stub
+		repository.save(workingHourEntity);
 		return null;
 	}
 
-	
 
 }

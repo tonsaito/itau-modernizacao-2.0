@@ -21,6 +21,6 @@ public interface WorkingTimeRepository extends CrudRepository<WorkingTimeEntity,
 	 * @param userId
 	 * @return List<WorkingTimeEntity>
 	 */
-	@Query("SELECT w FROM WorkingTimeEntity w WHERE w.usuario.id = ?1")
+	@Query("SELECT w FROM WorkingTimeEntity w WHERE w.user.id = ?1")
 	List<WorkingTimeEntity> findAllByUserId(Integer userId);
 }

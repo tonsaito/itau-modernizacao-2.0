@@ -21,19 +21,19 @@ public class WorkingTimeListModel {
 	@JsonProperty(value = "usuario")
 	private UserEntity userEntity;
 	@JsonProperty(value = "logs")
-	private List<WorkingTimeEntity> workingTimeEntity;
+	private List<WorkingTimeEntity> workingTimeEntityList;
 	@JsonProperty(value = "horasTrabalhadas")
 	private String totalWorkLog;
 
 	public void calculateWorkingTime() {
 		Date lastEntrance = null;
 		long seconds = 0;
-		for (WorkingTimeEntity workingTime : this.workingTimeEntity) {
-			if (workingTime.getTipo() == WorkingTimeEntity.TYPE.ENTRADA) {
-				lastEntrance = workingTime.getData();
+		for (WorkingTimeEntity workingTime : this.workingTimeEntityList) {
+			if (workingTime.getType() == WorkingTimeEntity.TYPE.ENTRADA) {
+				lastEntrance = workingTime.getDate();
 			} else {
 				if (lastEntrance != null) {
-					seconds += getSecondsBetweenDates(lastEntrance, workingTime.getData());
+					seconds += getSecondsBetweenDates(lastEntrance, workingTime.getDate());
 					lastEntrance = null;
 				}
 			}
@@ -44,34 +44,34 @@ public class WorkingTimeListModel {
 	private long getSecondsBetweenDates(Date date1, Date date2) {
 		return (date2.getTime() - date1.getTime()) / 1000;
 	}
-	
+
 	private String getTotalWorkLogTime(long seconds) {
 		StringBuilder worklogTime = new StringBuilder();
-	    int hours = (int) seconds / 3600;
-	    int remainder = (int) seconds - hours * 3600;
-	    int mins = remainder / 60;
-	    remainder = remainder - mins * 60;
-	    int secs = remainder;
+		int hours = (int) seconds / 3600;
+		int remainder = (int) seconds - hours * 3600;
+		int mins = remainder / 60;
+		remainder = remainder - mins * 60;
+		int secs = remainder;
 
-	    worklogTime.append(hours);
-	    if(hours == 1) {
-	    	worklogTime.append(" hora ");
-	    } else {
-	    	worklogTime.append(" horas ");
-	    }
-	    worklogTime.append(mins);
-	    if(mins == 1) {
-	    	worklogTime.append(" minuto ");
-	    } else {
-	    	worklogTime.append(" minutos ");
-	    }
-	    worklogTime.append(secs);
-	    if(secs == 1) {
-	    	worklogTime.append(" segundo");
-	    } else {
-	    	worklogTime.append(" segundos");
-	    }
-	    return worklogTime.toString();
+		worklogTime.append(hours);
+		if (hours == 1) {
+			worklogTime.append(" hora ");
+		} else {
+			worklogTime.append(" horas ");
+		}
+		worklogTime.append(mins);
+		if (mins == 1) {
+			worklogTime.append(" minuto ");
+		} else {
+			worklogTime.append(" minutos ");
+		}
+		worklogTime.append(secs);
+		if (secs == 1) {
+			worklogTime.append(" segundo");
+		} else {
+			worklogTime.append(" segundos");
+		}
+		return worklogTime.toString();
 	}
 
 }
