@@ -12,8 +12,11 @@ mvn spring-boot:run
 
 ## Mocked users
 Para fins de usabilidade, ao rodar o projeto, são carregados 3 usuários:
+
 ID: 10001 - João Machado, 123.456.789-11, joao.machado@email.com
+
 ID: 10002 - Maria Diniz, 123.456.789-12, maria.diniz@email.com
+
 ID: 10003 - Marcelo Silva, 123.456.789-13, marcelo.silva@email.com
 
 #### GET http://localhost:8080/v1/users
