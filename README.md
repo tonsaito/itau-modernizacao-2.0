@@ -19,6 +19,10 @@ ID: 10002 - Maria Diniz, 123.456.789-12, maria.diniz@email.com
 
 ID: 10003 - Marcelo Silva, 123.456.789-13, marcelo.silva@email.com
 
+## Postman
+Para facilitar, basta importar o arquivo "Itaú Modernização 2.0.postman_collection.json" no Postman.
+
+
 #### GET http://localhost:8080/v1/users
 ##### Listar todos usuários
 
@@ -151,7 +155,7 @@ ___
 ```
 ___
 
-#### POST localhost:8080/v1/users/{id}/logtime
+#### POST http://localhost:8080/v1/users/{id}/logtime
 ##### Bater ponto com ID do usuário
 
 **Body**
